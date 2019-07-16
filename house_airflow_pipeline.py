@@ -24,7 +24,7 @@ default_args = {
     'email': ['cmattheson6@gmail.com'],
     'email_on_failure': False, # Eventually change to True
     'email_on_retry': False,
-    'start_date': datetime(2019, 6, 30),
+    'start_date': datetime(2019, 7, 16) #Change date to be dynamic,
     'retries': 2,
     'retry_delay': timedelta(minutes=5)
 }
