@@ -95,4 +95,4 @@ t4 = BashOperator(
 
 # Build task pipeline order
 
-t1 << t2 << t3 << t4
+t1 >> t2 >> t3 >> t4
