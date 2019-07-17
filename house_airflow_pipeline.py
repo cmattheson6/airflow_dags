@@ -3,8 +3,6 @@ from airflow.contrib.operators.dataflow_operator import DataFlowPythonOperator
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta, date
-# import house_members.house_members_scrapy.main as scrape
-# import house_members.house_members_dataflow as df
 # import os
 
 gcs_creds = 'C:/Users/cmatt/Downloads/gce_creds.json'
@@ -44,9 +42,10 @@ dag = DAG('house_members',
 #     dag=dag
 # )
 
+
 t1 = BashOperator(
     task_id='scrape_house_members',
-    bash_command='gcloud pubsub topics publish scrapy --message "house members scrape"',
+    bash_command='gcloud pubsub topics publish scrapy --message "house members scrape" --project politics-data-tracker-1',
     retries=2,
     dag=dag
 )
