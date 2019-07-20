@@ -79,7 +79,7 @@ t2 = BashOperator(
 # Set all options needed to properly run the pipeline. This pipeline will run on Dataflow as a streaming pipeline.
 
 df_options = {
-    'streaming': False,
+    'streaming': 'False',
     'runner': 'DataflowRunner',
     'project': project_id,
     'temp_location': 'gs://{0}/tmp'.format(project_id),
