@@ -72,7 +72,7 @@ t2 = BashOperator(
 t3 = BashOperator(
     task_id='df_v2',
     bash_command='py {0} --setup_file={1} \
-    --experiments=allow_non_updatable_job_parameter'.format(df_path, df_setup_path),
+    --experiments=allow_non_updatable_job_parameter'.format(project_path + df_path, project_path + df_setup_path),
     dag=dag
 )
 
