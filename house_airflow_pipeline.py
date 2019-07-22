@@ -69,12 +69,12 @@ t2 = BashOperator(
 #     dag=dag
 # )
 
-# t3 = BashOperator(
-#     task_id='df_v2',
-#     bash_command='cd ../house_members_dataflow \
-#     py -m house_members_df --setup_file=./setup.py --experiments=allow_non_updatable_job_parameter',
-#     dag=dag
-# )
+t3 = BashOperator(
+    task_id='df_v2',
+    bash_command='py {0} --setup_file={1} \
+    --experiments=allow_non_updatable_job_parameter'.format(df_path, df_setup_path),
+    dag=dag
+)
 
 # Set all options needed to properly run the pipeline. This pipeline will run on Dataflow as a streaming pipeline.
 
@@ -85,14 +85,14 @@ df_options = {
     'temp_location': 'gs://{0}/tmp'.format(project_id),
     'staging_location': 'gs://{0}/staging'.format(project_id)}
 
-t3 = DataFlowPythonOperator(
-    task_id='df_v3',
-    py_file=project_path+df_path,
-    py_options=['--setup_file={0}'.format(project_path+df_setup_path),
-                '--experiments=allow_non_updatable_job_parameter'],
-    dataflow_default_options=df_options,
-    dag=dag
-)
+# t3 = DataFlowPythonOperator(
+#     task_id='df_v3',
+#     py_file=project_path+df_path,
+#     py_options=['--setup_file={0}'.format(project_path+df_setup_path),
+#                 '--experiments=allow_non_updatable_job_parameter'],
+#     dataflow_default_options=df_options,
+#     dag=dag
+# )
 
 # If successful, clean out temp CSV files
 
