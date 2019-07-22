@@ -12,7 +12,7 @@ pipeline_name = 'house_members'
 blob_name = 'csvs/{0}/{0}_{1}.csv'.format(pipeline_name, date.today())
 gcs_path = 'gs://' + bucket_name + '/' + blob_name
 
-project_path = '../poliviews/house_members'
+project_path = '~/poliviews/house_members'
 df_path = '/house_members_dataflow/house_members_df.py'
 df_setup_path = '/house_members_dataflow/setup.py'
 
