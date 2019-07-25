@@ -3,7 +3,7 @@ from airflow.contrib.operators.dataflow_operator import DataFlowPythonOperator
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta, date
-# import os
+import os
 
 gcs_creds = 'C:/Users/cmatt/Downloads/gce_creds.json'
 project_id = 'politics-data-tracker-1'
@@ -12,7 +12,7 @@ pipeline_name = 'house_members'
 blob_name = 'csvs/{0}/{0}_{1}.csv'.format(pipeline_name, date.today())
 gcs_path = 'gs://' + bucket_name + '/' + blob_name
 
-project_path = '~/poliviews/house_members'
+project_path = os.path.dirname(os.getcwd()) + '/poliviews/house_members'
 df_path = '/house_members_dataflow/house_members_df.py'
 df_setup_path = '/house_members_dataflow/setup.py'
 
